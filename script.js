@@ -57,7 +57,7 @@ btn.addEventListener("click", () => {
      while(parent.lastChild) {
          parent.lastChild.remove();
      } 
-     if (newGrid >= 100) {
+     if (newGrid > 100) {
         alert("TOO LARGE OF A NUMBER");
         newGrid = prompt("Enter desired new grid, MAX:100");
     } 

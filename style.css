@@ -15,10 +15,11 @@ body {
 .row {
     width: 45px;
     height: 45px;
-    background: aqua;
 }
 
 
-.row:hover {
-   
+.btn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }

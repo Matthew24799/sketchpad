@@ -3,12 +3,17 @@ body {
     margin: 0px;
     padding: 0px;
 }
-#container {
+
+.sketchContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
+    flex-shrink: 1;
 }
 
 
@@ -16,6 +21,7 @@ body {
     width: 45px;
     height: 45px;
 }
+
 
 
 .btn {

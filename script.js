@@ -1,7 +1,6 @@
 
 
 function spawnGrid(input) {
-
     let container = document.querySelector("#container");
     for (let i = 0; i < input; i++) {
         let column = document.createElement("div");
@@ -13,14 +12,14 @@ function spawnGrid(input) {
         row.classList.add("row");
         row.style.border = "2px solid black";
         column.appendChild(row)
-   
+        
     }
-       container.appendChild(column); 
-    }
+       container.appendChild(column);
+       
+    } 
+    
 };
-
-
-
-
 spawnGrid(16);
+
+
 

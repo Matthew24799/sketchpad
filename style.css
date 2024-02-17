@@ -1,0 +1,19 @@
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+
+.row {
+    width: 45px;
+    height: 45px;
+    background: aqua;
+}

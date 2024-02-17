@@ -25,6 +25,32 @@ let boxes = document.getElementsByClassName("row");
 const btn = document.querySelector("#btn");
 
 
+function randomInteger(max) {
+    return Math.floor(Math.random()*(max + 1));
+}
+
+function randomRgbColor() {
+    let r = randomInteger(255);
+    let g = randomInteger(255);
+    let b = randomInteger(255);
+    return [r,g,b];
+}
+
+console.log(randomRgbColor());
+
+function randomHexColor() {
+    let [r,g,b] = randomRgbColor();
+
+    let hr = r.toString(16).padStart(2,"0");
+    let hg = g.toString(16).padStart(2, "0");
+    let hb = b.toString(16).padStart(2, "0");
+
+    return "#" + hr + hg + hb;
+};
+
+
+
+
 btn.addEventListener("click", () => {
     let newGrid = prompt("Enter desired new grid, MAX:100");
      let parent = document.querySelector("#container"); 
@@ -41,9 +67,11 @@ btn.addEventListener("click", () => {
 
      for(let box of boxes) { 
 
+       
+
         box.addEventListener("mouseover", () => {
-            box.style.backgroundColor = "red";
-            console.log(box);
+            let hex = randomHexColor();
+            box.style.backgroundColor = hex;
         });
         
         
@@ -54,9 +82,14 @@ btn.addEventListener("click", () => {
 
 for(let box of boxes) { 
 
+
+
+   
+
 box.addEventListener("mouseover", () => {
-    box.style.backgroundColor = "red";
-    console.log(box);
+    let hex = randomHexColor();
+    box.style.backgroundColor = hex;
+    console.log(box.value);
 });
 
 

@@ -12,14 +12,16 @@ body {
 
 #container{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    flex-shrink: 1;
+    flex-grow: 1;
 }
 
 
 .row {
-    width: 45px;
-    height: 45px;
+    flex: 1 1 auto;
+    min-width: 25px;
+    min-height: 25px;
 }
 
 

@@ -21,5 +21,15 @@ function spawnGrid(input) {
 };
 spawnGrid(16);
 
+let boxes = document.getElementsByClassName("row"); 
 
 
+for(let box of boxes) { 
+
+box.addEventListener("mouseover", () => {
+    box.style.backgroundColor = "red";
+    console.log(box);
+});
+
+
+};

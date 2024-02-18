@@ -30,10 +30,17 @@ body {
 }
 
 
-
-
 .btn {
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.toolBar {
+    gap: 25px;
+    margin-right: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
 }

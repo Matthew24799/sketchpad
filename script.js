@@ -10,7 +10,7 @@ function spawnGrid(input) {
     for ( let k = 0; k < input; k++) {
         let row = document.createElement("div");
         row.classList.add("row");
-        row.style.border = "2px solid black";
+        row.style.border = "1px solid black";
         column.appendChild(row)
         
     }
@@ -23,7 +23,7 @@ spawnGrid(16);
 
 let boxes = document.getElementsByClassName("row"); 
 const btn = document.querySelector("#btn");
-
+btn.addEventListener("click",newGrid);
 
 function randomInteger(max) {
     return Math.floor(Math.random()*(max + 1));
@@ -36,7 +36,6 @@ function randomRgbColor() {
     return [r,g,b];
 }
 
-console.log(randomRgbColor());
 
 function randomHexColor() {
     let [r,g,b] = randomRgbColor();
@@ -49,49 +48,30 @@ function randomHexColor() {
 };
 
 
-
-
-btn.addEventListener("click", () => {
+function newGrid() {
     let newGrid = prompt("Enter desired new grid, MAX:100");
-     let parent = document.querySelector("#container"); 
-     while(parent.lastChild) {
-         parent.lastChild.remove();
-     } 
-     if (newGrid > 100) {
-        alert("TOO LARGE OF A NUMBER");
-        newGrid = prompt("Enter desired new grid, MAX:100");
+    let parent = document.querySelector("#container"); 
+    while(parent.lastChild) {
+        parent.lastChild.remove();
     } 
-     spawnGrid(newGrid);
-    
+    if (newGrid > 100) {
+       alert("NUMBER TOO LARGE");
+       newGrid = prompt("Enter desired new grid, MAX:100");
+        } else spawnGrid(newGrid);
 
-
-     for(let box of boxes) { 
-
-       
-
-        box.addEventListener("mouseover", () => {
-            let hex = randomHexColor();
-            box.style.backgroundColor = hex;
-        });
-        
-        
-        };
-        
-
- });
-
-for(let box of boxes) { 
-
-
-
+        sprayCan();
+};
    
+sprayCan();
 
+
+function sprayCan() {
+for(let box of boxes) { 
 box.addEventListener("mouseover", () => {
     let hex = randomHexColor();
     box.style.backgroundColor = hex;
-    console.log(box.value);
 });
 
 
-};
+}};
 

@@ -2,6 +2,7 @@
 body {
     margin: 0px;
     padding: 0px;
+    justify-content: center;
 }
 
 .sketchContainer {
@@ -11,18 +12,24 @@ body {
 }
 
 #container{
+    min-height: 600px;
+    max-height: 600px;
+    min-width: 600px;
+    max-width: 600px;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    flex-grow: 1;
+    justify-content: center;
 }
 
-
-.row {
-    flex: 1 1 auto;
-    min-width: 45px;
-    min-height: 45px;
+.column {
+    width: 100%;
+    display: flex;
 }
+.row  {
+   flex-grow: 1;
+   
+}
+
 
 
 

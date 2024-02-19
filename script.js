@@ -3,8 +3,11 @@ const btn = document.querySelector("#btn");
 btn.addEventListener("click",newGrid);
 const sprayTool = document.querySelector("#sprayCan");
 const penTool = document.querySelector("#pen");
+let colorPicked = document.querySelector("#colorPicked");
 let enabled = true;
-
+colorPicked.addEventListener("input", function() {
+    console.log(colorPicked.value);
+})
    
 sprayTool.addEventListener("click", sprayCan);
 penTool.addEventListener("click", pen);
@@ -75,7 +78,7 @@ for(let box of boxes) {
     box.addEventListener("mouseover", () => {
         if (enabled == true) { 
             
-    box.style.backgroundColor = "black";
+    box.style.backgroundColor = colorPicked.value;
 }})};
 };
 
@@ -83,7 +86,7 @@ function pen() {
     enabled = false;
     for (let box of boxes) {
         box.addEventListener("mousedown", () => {
-        box.style.backgroundColor = "black";
+        box.style.backgroundColor = colorPicked.value;
         
         })
         sprayTool.addEventListener("mouseup", () => {
@@ -92,3 +95,4 @@ function pen() {
     
     }
 };
+

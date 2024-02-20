@@ -1,4 +1,4 @@
-const body = document.body;
+clear = document.querySelector("#clear");
 let boxes = document.getElementsByClassName("row"); 
 const btn = document.querySelector("#btn");
 btn.addEventListener("click",newGrid);
@@ -11,12 +11,14 @@ colorPicked.addEventListener("input", function() {
 })
    
 
+
 let mouseDown = false;
 
 
 document.addEventListener("dragstart", function(event)  {
     event.preventDefault();
 });
+
 
 
 document.body.onmousedown= () => (mouseDown = true)
@@ -49,6 +51,7 @@ spawnGrid(16);
 
 
 function newGrid() {
+
     let newGrid = prompt("Enter desired new grid, MAX:100");
     let parent = document.querySelector("#container"); 
     while(parent.lastChild) {
@@ -60,6 +63,15 @@ function newGrid() {
         } else spawnGrid(newGrid);
 
         sprayCan();
+
+        
+for (let box of boxes) {
+    
+    clear.addEventListener("click", () => {
+        box.style.backgroundColor = "white";
+    })
+    }
+
 };
    
 
@@ -112,3 +124,11 @@ function pen() {
     
     }
 };
+
+
+for (let box of boxes) {
+    
+    clear.addEventListener("click", () => {
+        box.style.backgroundColor = "white";
+    })
+    }

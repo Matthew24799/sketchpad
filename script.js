@@ -1,3 +1,4 @@
+const body = document.body;
 let boxes = document.getElementsByClassName("row"); 
 const btn = document.querySelector("#btn");
 btn.addEventListener("click",newGrid);
@@ -9,6 +10,19 @@ colorPicked.addEventListener("input", function() {
     console.log(colorPicked.value);
 })
    
+
+let mouseDown = false;
+
+
+document.addEventListener("dragstart", function(event)  {
+    event.preventDefault();
+});
+
+
+document.body.onmousedown= () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
+
 sprayTool.addEventListener("click", sprayCan);
 penTool.addEventListener("click", pen);
 
@@ -77,8 +91,11 @@ function sprayCan() {
 for(let box of boxes) { 
     box.addEventListener("mouseover", () => {
         if (enabled == true) { 
-            
+        if (mouseDown)  {
+
+        
     box.style.backgroundColor = colorPicked.value;
+        }
 }})};
 };
 
@@ -95,4 +112,3 @@ function pen() {
     
     }
 };
-

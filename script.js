@@ -9,11 +9,11 @@ let enabled = true;
 colorPicked.addEventListener("input", function() {
     console.log(colorPicked.value);
 })
-   
+
+const rainbowTool = document.querySelector("#rainBow");
 
 
 let mouseDown = false;
-
 
 document.addEventListener("dragstart", function(event)  {
     event.preventDefault();
@@ -27,6 +27,7 @@ document.body.onmouseup = () => (mouseDown = false)
 
 sprayTool.addEventListener("click", sprayCan);
 penTool.addEventListener("click", pen);
+rainbowTool.addEventListener("click", rainbowColor);
 
 function spawnGrid(input) {
     let container = document.querySelector("#container");
@@ -99,6 +100,7 @@ function randomHexColor() {
 
 
 function sprayCan() {
+
     
 for(let box of boxes) { 
     box.addEventListener("mouseover", () => {
@@ -119,11 +121,27 @@ function pen() {
         
         })
         sprayTool.addEventListener("mouseup", () => {
-            enabled = true
+            enabled = true;
+            
         })
-    
+        rainbowTool.addEventListener("mouseup", () => {
+            enabled = true;
+        })
     }
 };
+
+function rainbowColor() {
+
+    console.log("worked");
+    for (let box of boxes) {
+        box.addEventListener("mouseover", () => {
+            if (enabled == true) {
+            if (mouseDown) {
+                let randomColor = randomHexColor();
+                rainbowTool.style.backgroundColor = randomColor;
+            box.style.backgroundColor = randomColor;
+       }   }});
+}};
 
 
 for (let box of boxes) {
@@ -132,3 +150,5 @@ for (let box of boxes) {
         box.style.backgroundColor = "white";
     })
     }
+
+

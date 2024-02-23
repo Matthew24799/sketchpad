@@ -1,34 +1,25 @@
+
 clear = document.querySelector("#clear");
 let boxes = document.getElementsByClassName("row"); 
 const btn = document.querySelector("#btn");
-btn.addEventListener("click",newGrid);
-const sprayTool = document.querySelector("#sprayCan");
-const penTool = document.querySelector("#pen");
 let colorPicked = document.querySelector("#colorPicked");
-let enabled = true;
-colorPicked.addEventListener("input", function() {
-    console.log(colorPicked.value);
-})
-
+const pencil = document.querySelector("#pencil");
 const rainbowTool = document.querySelector("#rainBow");
 
-
+    //these are for toggling mouse down and up, to be used later.
 let mouseDown = false;
-
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 document.addEventListener("dragstart", function(event)  {
     event.preventDefault();
 });
+        //listeners for my buttons.
+btn.addEventListener("click",newGrid);       
+pencil.addEventListener("click", pencilTool);
+rainbowTool.addEventListener("click", rainbowcolorTool);
+clear.addEventListener("click", clearTool);
 
-
-
-document.body.onmousedown= () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
-
-
-sprayTool.addEventListener("click", sprayCan);
-penTool.addEventListener("click", pen);
-rainbowTool.addEventListener("click", rainbowColor);
-
+        //Takers user input and creates a grid to draw on.
 function spawnGrid(input) {
     let container = document.querySelector("#container");
     for (let i = 0; i < input; i++) {
@@ -39,7 +30,7 @@ function spawnGrid(input) {
     for ( let k = 0; k < input; k++) {
         let row = document.createElement("div");
         row.classList.add("row");
-        row.style.border = "1px solid black";
+        row.style.backgroundColor = "white";
         column.appendChild(row)
         
     }
@@ -48,9 +39,11 @@ function spawnGrid(input) {
     } 
     
 };
+
+    //default grid size
 spawnGrid(16);
 
-
+        //when newgrid button is pressed this function will run.
 function newGrid() {
 
     let newGrid = prompt("Enter desired new grid, MAX:100");
@@ -63,19 +56,9 @@ function newGrid() {
        newGrid = prompt("Enter desired new grid, MAX:100");
         } else spawnGrid(newGrid);
 
-        sprayCan();
-
-        
-for (let box of boxes) {
-    
-    clear.addEventListener("click", () => {
-        box.style.backgroundColor = "white";
-    })
-    }
-
 };
    
-
+        // all the math needed to create a random Hex color
 function randomInteger(max) {
     return Math.floor(Math.random()*(max + 1));
 }
@@ -99,56 +82,35 @@ function randomHexColor() {
 };
 
 
-function sprayCan() {
-
-    
-for(let box of boxes) { 
-    box.addEventListener("mouseover", () => {
-        if (enabled == true) { 
-        if (mouseDown)  {
-
-        
-    box.style.backgroundColor = colorPicked.value;
-        }
-}})};
-};
-
-function pen() {
-    enabled = false;
-    for (let box of boxes) {
-        box.addEventListener("mousedown", () => {
-        box.style.backgroundColor = colorPicked.value;
-        
-        })
-        sprayTool.addEventListener("mouseup", () => {
-            enabled = true;
-            
-        })
-        rainbowTool.addEventListener("mouseup", () => {
-            enabled = true;
-        })
-    }
-};
-
-function rainbowColor() {
-
-    console.log("worked");
+    //we take the randomHexColor from earlier
+    // and store it in random color
+function rainbowcolorTool() {
     for (let box of boxes) {
         box.addEventListener("mouseover", () => {
-            if (enabled == true) {
             if (mouseDown) {
                 let randomColor = randomHexColor();
-                rainbowTool.style.backgroundColor = randomColor;
-            box.style.backgroundColor = randomColor;
-       }   }});
+                box.style.backgroundColor = randomColor;
+       }   });
 }};
 
-
-for (let box of boxes) {
-    
-    clear.addEventListener("click", () => {
-        box.style.backgroundColor = "white";
-    })
+    //pencilTool will take the value from our coloPicked color wheel
+function pencilTool() {
+    for (let box of boxes) {
+        box.addEventListener("mouseover", () => {
+            if(mouseDown) {
+                box.style.backgroundColor = colorPicked.value;
+            }
+        })
     }
+};
+
+    //clears the board turning everything white.
+function clearTool() {
+    for (let box of boxes) {
+        box.style.backgroundColor = "white"
+    }
+};
 
 
+
+    

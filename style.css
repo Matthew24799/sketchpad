@@ -1,6 +1,6 @@
 
-body {
-    background-color: beige ;
+body {font-family: 'Common Pixel', sans-serif;
+    background-color: lightcoral;
     margin: 0px;
     padding: 0px;
     justify-content: center;
@@ -8,6 +8,7 @@ body {
 
 h1 {
     text-align: center;
+    font-size: 40px;
 }
 
 .sketchContainer {
@@ -36,7 +37,7 @@ h1 {
 }
 
 
-.btn {
+#btn {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -50,4 +51,12 @@ h1 {
     flex-direction: column;
     border: 1px solid black;
     text-align: center;
+    background-color: lightblue;
+}
+
+.button:hover {
+ font-size: 20px;
+}
+.button:active {
+    background-color: palegreen;
 }
